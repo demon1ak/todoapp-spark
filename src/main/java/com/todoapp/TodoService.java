@@ -24,7 +24,7 @@ public class TodoService {
 
     public List<Todo> findAll() {
         List<Todo> todos = new ArrayList<>();
-        DBCursor dbObjects = collection.find();
+        DBCursor dbObjects = collection.find().sort(new BasicDBObject("createdOn","1"));
         while (dbObjects.hasNext()) {
             DBObject dbObject = dbObjects.next();
             todos.add(new Todo((BasicDBObject) dbObject));
